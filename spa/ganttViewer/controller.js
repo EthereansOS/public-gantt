@@ -6,7 +6,7 @@ var GanttViewerController = function(view) {
         if(!ref) {
             return;
         }
-        var data = await window.AJAXRequest('data/gantt.json');
+        var data = await (await fetch('https://raw.githubusercontent.com/EthereansOS/public-gantt/gh-pages/data/gantt.json')).json();
         (new Gantt("ganttChart", {
             sidebarHeader: "Unused right now",
             noDataFoundMessage: "No data found",
