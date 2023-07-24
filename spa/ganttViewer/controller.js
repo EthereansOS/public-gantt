@@ -2,11 +2,13 @@ var GanttViewerController = function(view) {
     var context = this;
     context.view = view;
 
+    var baseURL = window.location.port === '5500' ? 'http://127.0.0.1:5500' : 'https://raw.githubusercontent.com/EthereansOS/public-gantt/gh-pages';
+
     context.refreshGantt = async function refreshGantt(ref) {
         if(!ref) {
             return;
         }
-        var data = await (await fetch('https://raw.githubusercontent.com/EthereansOS/public-gantt/gh-pages/data/gantt.json')).json();
+        var data = await (await fetch(`${baseURL}/data/gantt.json`)).json();
         (new Gantt("ganttChart", {
             sidebarHeader: "Unused right now",
             noDataFoundMessage: "No data found",
