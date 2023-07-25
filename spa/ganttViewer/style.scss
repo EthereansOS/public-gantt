@@ -1,8 +1,18 @@
 .ganttViewer {
-    .gfb-gantt-content {
-        border: 1px solid lightgray;
-        .gfb-gantt-headers {
-            display: none;
+    .gfb-gantt-wrapper {
+        border-color: transparent;
+        --border-color: transparent;
+        .gfb-gantt-content {
+            border: 1px solid lightgray;
+            .gfb-gantt-headers {
+                display: none;
+            }
+            .gfb-gantt-row {
+                border: 1px solid lightgray;
+                .gfb-gantt-sidebar-header {
+                    border-right: 1px solid lightgray;
+                }
+            }
         }
     }
 }

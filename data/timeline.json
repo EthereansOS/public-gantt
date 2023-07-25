@@ -1,0 +1,16 @@
+[
+    {
+        "codeName": "defiManager",
+        "name": "DeFi Manager",
+        "description": "Remove all references of Bazaar and ItemV3",
+        "started": "Jul 25 2023"
+    }, {
+        "codeName": "proposalsManager",
+        "name": "Proposals Manager",
+        "descriptionLink": "proposalsManager_1.md"
+    }, {
+        "codeName": "fixedInflation",
+        "name": "Fixed Inflation",
+        "description": "The actual Fixed Inflation is too linked to the EthereansOS protocol purposes, it must be realized in a general purpose way"
+    }
+]
