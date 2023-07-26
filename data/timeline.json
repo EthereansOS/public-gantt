@@ -1,16 +1,21 @@
 [
     {
-        "codeName": "defiManager",
-        "name": "DeFi Manager",
-        "description": "Remove all references of Bazaar and ItemV3",
-        "started": "Jul 25 2023"
-    }, {
-        "codeName": "proposalsManager",
-        "name": "Proposals Manager",
-        "descriptionLink": "proposalsManager_1.md"
-    }, {
         "codeName": "fixedInflation",
         "name": "Fixed Inflation",
-        "description": "The actual Fixed Inflation is too linked to the EthereansOS protocol purposes, it must be realized in a general purpose way"
+        "description": "The actual Fixed Inflation is too linked to the EthereansOS protocol purposes, it must be realized in a general purpose way",
+        "started": "Jul 26 2023"
+    }, {
+        "codeName": "wireframes",
+        "name": "UI Wireframes",
+        "description": "Creation of the wireframes for the new UI discussed during the Delegations meeting of Jul 25",
+        "started": "Jul 26 2023"
+    }, {
+        "codeName": "orgFactory",
+        "name": "Organization Factory",
+        "description": "Once the Wireframes are completed, it could be possible to work on the Organization Factory"
+    }, {
+        "codeName": "lightweightOrgFactory",
+        "name": "Lightweight Organization Factory",
+        "description": "Delegations request made on Jul 25: A Lighweight Organization cuts off the Fixed Inflation mechanism and has only Treasury Splitter, Common Treasury, Delegations and Investments Fund. In terms of code, removing stuff from the fat Organization Factory must be enough."
     }
 ]

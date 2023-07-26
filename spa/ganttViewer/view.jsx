@@ -5,6 +5,6 @@ var GanttViewer = React.createClass({
         'assets/plugins/showdown/showdown.min.js'
     ],
     render() {
-        return (<div id="ganttChart" ref={this.controller.refreshGantt}></div>);
+        return (<div id="ganttChart" ref={ref => ref && ref.children.length === 0 && this.controller.refreshGantt(ref).then(this.props.onData)}></div>);
     }
 });

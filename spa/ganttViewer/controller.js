@@ -5,9 +5,6 @@ var GanttViewerController = function(view) {
     var baseURL = window.location.port === '5500' ? 'http://127.0.0.1:5500' : 'https://raw.githubusercontent.com/EthereansOS/public-gantt/gh-pages';
 
     context.refreshGantt = async function refreshGantt(ref) {
-        if(!ref) {
-            return;
-        }
         var data = await context.retrieveData();
         (new Gantt("ganttChart", {
             sidebarHeader: "Unused right now",
@@ -25,22 +22,26 @@ var GanttViewerController = function(view) {
             a.style.backgroundColor = "#" + data[i].backgroundColor;
             if(!data[i].started) {
                 a.style.opacity = 0.3;
-                a.innerHTML = `<i class="fa fa-clock" aria-hidden="true" style="float: right; margin-top: 10px; margin-right: -5px; font-size: 15px;"></i>`
+                a.innerHTML = `<i class="fa fa-hourglass" aria-hidden="true" style="float: right; margin-top: 10px; margin-right: -5px; font-size: 15px;"></i>`
             } else if(!data[i].completed) {
                 a.style.opacity = 0.5;
-                a.innerHTML = `<i class="fa fa-hourglass" aria-hidden="true" style="float: right; margin-top: 10px; margin-right: -5px; font-size: 10px;"></i>`
+                a.innerHTML = `<i class="fa fa-play" aria-hidden="true" style="float: right; margin-top: 10px; margin-right: -5px; font-size: 10px;"></i>`
             } else {
                 a.innerHTML = `<i class="fa fa-check" aria-hidden="true" style="float: right; margin-top: 10px; margin-right: -5px; font-size: 20px; color: darkgreen;"></i>`
             }
         });
+        return data;
     };
 
     context.retrieveData = async function retrieveData() {
+
+        var taskInterval = 300000;
+        var taskDuration = 1800000;
         var rawDataArray = await (await fetch(`${baseURL}/data/timeline.json`)).json();
 
         var data = [];
 
-        var date = (new Date().getTime()) - 300000;
+        var date = (new Date().getTime()) - taskInterval;
 
         var globalRecordID = 1;
         var recordIDs = {};
@@ -51,8 +52,8 @@ var GanttViewerController = function(view) {
                 recordID : originalData.recordID,
                 row : originalData.name,
                 tooltip : await context.getTooltip(rawData, originalData),
-                start : new Date(date += 300000).toString(),
-                end : new Date(date += 1800000).toString(),
+                start : new Date(date += taskInterval).toString(),
+                end : new Date(date += taskDuration).toString(),
                 backgroundColor : originalData.backgroundColor,
                 started : rawData.started,
                 completed : rawData.completed
